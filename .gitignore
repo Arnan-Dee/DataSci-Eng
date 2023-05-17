@@ -1,10 +1,2 @@
-.venv
-spark/resources/response.csv
-spark/__pycache__
-spark/share
-spark/Scripts
-spark/Lib
-spark/Include
-spark/pyvenv.cfg
-spark/resources/photos/*
-spark/resources/processed.csv
+resources/photos/
+resources/processed/processed

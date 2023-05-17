@@ -1,17 +1,19 @@
-# DataSci-Eng
+# Step 1
 
-To install all the dependencies use
+clone this repo
 
-```shell
-py -m venv spark
-.\spark\Scripts\activate
-py -m pip install pyspark==3.3.2 request pandas
-```
+# Step 2
 
-More information regarding venv can be found in https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment.
+cd spark
 
-Then run cells in demo.ipynb(located in spark/execution_scripts/demo.ipynb). Demo.ipynb is the file that
-produce the same result as Spark but it processes data in sequential manner. The analytic script using Spark is still worked on. Nevertheless, as a demo, it serves the same result.
+# Step 3
 
-This command above will produce jpg files in folder resources/photos and processed.csv in the same
-folder. Those data file is ready to be use in ML pipeline. However, prior data cleaning also need to be done.
+run following commands in a terminal
+
+`docker build --no-cache  --progress=plain  -t tiw-spark:3.0 .`
+`docker-compose up`
+
+# Step 4
+
+images will appear in ./resources/photos
+csv files will appear in ./resources/processed/processed
