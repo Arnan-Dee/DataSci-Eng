@@ -10,7 +10,7 @@ def download_image(row):
         photo_path = '/mount_volumn/resources/photos'
         img_url = row['photo']
         index = row['index']
-        img_filename = f'{photo_path}/image_{index}.jpg'
+        img_filename = f'{photo_path}/{row["ticket_id"]}.jpg'
         try: 
             response = requests.get(img_url)
             print("Got image from URL")
@@ -45,18 +45,18 @@ cols = [c.replace('.', '_') for c in df.columns]
 df = df.toDF(*cols)
 print("fetched csv")
 
-
-df = df.filter("type == '{จราจร}'")
+df = df.filter(col("type").contains("จราจร"))
 df_filter = df.na.drop()
 df_append_col = df_filter.withColumn('index', monotonically_increasing_id())
 
 
+# df_test = df_append_col.limit(5)
 df_test = df_append_col
 df_test.show()
 df_test.foreach(download_image)
 print("downloading images")
 
-df_filename = df_test.withColumn('filename', concat(lit('image_'), col('index'), lit('.jpg')))
+df_filename = df_test.withColumn('filename', concat(col('ticket_id'), lit('.jpg')))
 df_final = df_filename
 
 df_final.write.option("header",True).csv('/mount_volumn/resources/processed_files/processed')
