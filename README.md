@@ -5,6 +5,8 @@ clone this repo
 # Step 2
 
 cd spark
+`mkdir ./resources/photos`
+`mkdir ./resources/processed`
 
 # Step 3
 
