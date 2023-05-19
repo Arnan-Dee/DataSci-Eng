@@ -15,8 +15,8 @@ run following commands in a terminal
 
 # Step 4
 
-images will appear in ./resources/photos
-csv files will appear in ./resources/processed/processed
+wait for 45 minutes until all images will appear in ./resources/photos
+and csv files will appear in ./resources/processed/processed
 
 If you want to run Spark again, delete only processed dir
 `rm -r ./resource/processed/processed`

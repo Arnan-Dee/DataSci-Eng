@@ -17,6 +17,7 @@ def download_image(row):
         except:
             print(img_url)
             print(index)
+            return
         if response.status_code != 200:
             print("Got not 200")
             print(response.content)
@@ -45,8 +46,6 @@ df = df.toDF(*cols)
 print("fetched csv")
 
 
-cols = ['coords', 'photo', 'timestamp', 'type']
-df = df.select(cols)
 df = df.filter("type == '{จราจร}'")
 df_filter = df.na.drop()
 df_append_col = df_filter.withColumn('index', monotonically_increasing_id())
@@ -58,7 +57,7 @@ df_test.foreach(download_image)
 print("downloading images")
 
 df_filename = df_test.withColumn('filename', concat(lit('image_'), col('index'), lit('.jpg')))
-df_final = df_filename.select(col('coords'), col('timestamp'), col('filename'))
+df_final = df_filename
 
 df_final.write.option("header",True).csv('/mount_volumn/resources/processed_files/processed')
 print("Successfully create CSV in processed")
