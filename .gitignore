@@ -8,3 +8,5 @@ spark/Include
 spark/pyvenv.cfg
 spark/resources/photos/*
 spark/resources/processed.csv
+spark/execution_scripts/yolov5x6.pt
+spark/execution_scripts/mlruns/*
