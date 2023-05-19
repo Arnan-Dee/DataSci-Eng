@@ -1,2 +1,2 @@
-spark/resources/photos/
-spark/resources/processed/
+spark/resources/photos/*
+spark/resources/processed/*
